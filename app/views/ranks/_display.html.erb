@@ -1,0 +1,13 @@
+	<table class="stats-display tablesorter">
+		<%= display_header(League.headers) %>
+		<tbody>
+		<% vals.each do |val| %>
+			<% player = Player.find(val[:player_id]) %>
+			<% val.delete(:player_id) %>
+			<% next if val.empty? %>
+			<% name = player.name.split(" ").map {|f_l| f_l.upcase}.join(" ") %>
+			<% ranks = [name] + league.row(val).map {|n| n.round(3)} %>
+			<%= display_row(ranks) %>
+		<% end %>
+		</tbody>
+	</table>

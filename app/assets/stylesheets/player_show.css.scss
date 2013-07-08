@@ -1,0 +1,41 @@
+ul {
+	list-style: none;
+}
+
+li {
+	font-size: 14;
+	font-family: "Baskerville";
+	color: black;
+}
+
+#player-name {
+	margin-left: 40px;
+}
+
+.group:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+
+.is-off {
+	display: none;
+	visibility: hidden; 
+}
+
+#player-photo {
+	height: 150px;
+	width: 150px;
+	border: 2px solid black;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 50px;
+	float: left;
+}
+
+#player-info a {
+	text-decoration: none;
+	color: green;
+}
+

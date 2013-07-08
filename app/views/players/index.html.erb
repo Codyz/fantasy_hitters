@@ -1,0 +1,42 @@
+<table id="player-table">
+
+
+	<%= render partial: "positions/filter", :locals => {:controller => "players", :action => "index"} %> 
+
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Team</th>
+			<th>League</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @players.each do |player| %>
+	<tr>
+		<td>
+		<%= link_to player.name.split(" ").map {|w| w.capitalize}.join(" "), player_url(player) %>
+		</td>
+		<td>
+			<%= player.my_position_name.upcase %>
+		</td> 
+		<% if player.team_id %>
+			<td>
+				<%= player.team_name.upcase %> 
+			</td> 
+			<td>
+				<%= player.circuit_name.upcase %>
+			</td>
+		<% else %>
+			<td>
+				<%= "FA" %>
+			</td>
+			<td>
+				<%= "None" %>
+			</td>
+		<% end %>
+	</tr>
+	<% end %>
+	
+</tbody>
+</table>

@@ -1,0 +1,57 @@
+<h2 id="rank-top"><%= @league.name %>'s Ranks </h2> 
+
+
+	<nav class="stat-select">
+		<ul class="stat-list">
+			<li><a href="#" id="proj-ranks" class="rank-link hidden">Toggle Projections</a></li>
+			<li><a href="#" id="stat-ranks" class="rank-link">Toggle SeasonStatistics</a></li>
+		</ul>
+	</nav>
+
+	<div class="rank-display">
+	<table class="stats-display tablesorter">
+		<%= display_header(League.headers) %>
+		<tbody>
+		<% @proj_vorp_seasons.each do |val| %>
+			<% player = Player.find(val[:player_id]) %>
+			<% val.delete(:player_id) %>
+			<% next if val.empty? %>
+			<% name = player.name.split(" ").map {|f_l| f_l.upcase}.join(" ") %>
+			<% ranks = [name] + @league.row(val).map {|n| n.round(3)} %>
+			<%= display_row(ranks) %>
+		<% end %>
+		</tbody>
+	</table>
+	</div>
+	
+	<div class="rank-display hidden">
+	<table class="stats-display tablesorter">
+		<%= display_header(League.headers) %>
+		<tbody>
+		<% @live_vorp_seasons.each do |val| %>
+			<% player = Player.find(val[:player_id]) %>
+			<% val.delete(:player_id) %>
+			<% next if val.empty? %>
+			<% name = player.name.split(" ").map {|f_l| f_l.upcase}.join(" ") %>
+			<% ranks = [name] + @league.row(val).map {|n| n.round(3)} %>
+			<%= display_row(ranks) %>
+		<% end %>
+		</tbody>
+	</table>
+	</div>
+
+<script type="text/javascript">
+
+	$(function() {
+  	$(".stats-display").tablesorter({
+  		sortInitialOrder: "desc"
+  	})
+  });
+
+	$('.rank-link').click(function() {
+		console.log("commencing toggling");
+		$('.rank-link').toggleClass('hidden');
+		$('.rank-display').toggleClass('hidden');
+	});
+
+</script>

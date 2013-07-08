@@ -1,0 +1,43 @@
+<h2 id="player-name"><%= @player.fname.capitalize + " " + @player.lname.capitalize %></h2>
+
+<section id="player-top" class="group">
+
+
+	<div id="player-info">
+		<ul>
+			<li>Position: <%= @player.my_position_name.upcase %></li>
+			<li>Team: <%= @player.team_name.capitalize %></li>
+			<li>League: <%= @player.circuit_name.upcase %></li>
+			<li>Age: <%= @player.age %></li>
+			<li><%= link_to "Make A Note", new_note_path(:player_id => @player.id) %></li>
+		</ul>
+	</div>
+
+
+</section>
+
+<div class="player-numbers">
+	<ul id="single-player-numbers">
+			<% projection = @player.batting_projections.first %>
+				Projections
+				<li>
+				<table class="stats-display">
+					<%= display_header(BattingProjection.headers[1..-1]) %>
+					<%= display_row(projection.row) %>
+				</table>
+			</li>
+				Stats
+			<li>
+				<% if @player.batting_stat %>
+					<table class="stats-display">
+						<%= display_header(BattingStat.headers[1..-1]) %> 
+						<%= display_row(@player.batting_stat.row) %>
+					</table>
+				<% else %>
+					This player has no stats to display
+				<% end %>
+			</li>
+		</ul>
+</div>
+
+

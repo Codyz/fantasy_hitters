@@ -4,6 +4,7 @@
   <title>BaseballApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,6 +12,35 @@
 
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
+
+
+	<header class="header group">
+
+		<nav id="nav-bar group">
+			<ul class="nav-list">
+				<li><%= link_to "Players", players_path %></li>
+				<li><%= link_to "Projections", batting_projections_path %></li>
+				<li><%= link_to "Stats", batting_stats_path%></li>		
+				<% if current_user %>
+					<li><%= link_to "Ranks", leagues_path%></li>
+					<li><%= link_to "Notes", notes_path%></li>
+					<li><%= link_to "Create League", new_league_path %></li>
+					<li><%= link_to "Sign Out", destroy_user_session_url, :method => "delete" %></li>
+				<% else %>
+					<li><%= link_to "Sign In", new_user_session_url%></li>
+				<% end %>
+
+			</ul>
+			
+			<div id="search">
+				<form action="<%= players_path %>" method="get" class="search">
+					<input type="text" name="search" value="">
+					<button>Search Player</button>
+				</form>
+			</div>
+
+		</nav>
+	</header>
 
 <%= yield %>
 

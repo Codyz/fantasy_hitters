@@ -1,0 +1,33 @@
+<h2 id="player-page-top">Major League Player Batting Projections</h2>
+
+
+<%= render partial: "positions/filter", :locals => {:controller => "batting_projections", :action => "index"} %>
+
+
+<div class="player-batting">
+	<table class="stats-display tablesorter">
+		<%= display_header(BattingProjection.headers) %>
+		<tbody>
+		<% @players.each do |player| %>
+			<% stats_object = player.batting_projections.where(:company => "zips").first # returns an array %>
+			<% name = player.name.split(" ").map {|f_l| f_l.upcase}.join(" ") %> 
+			<% if stats_object %>
+				<% stats = [name] + stats_object.row %>
+			<% else %>
+				<% stats = [name] + [0] * 20 %> 
+			<% end %> 
+
+			<%= display_row(stats) %>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+
+
+<script type="text/javascript">
+	$(function() {
+  	$(".stats-display").tablesorter({
+  		sortInitialOrder: "desc"
+  	})
+  });
+</script>

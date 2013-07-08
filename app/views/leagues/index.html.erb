@@ -1,0 +1,11 @@
+<div id="league-show">
+
+	<h2>Your Leagues</h2>
+
+	<ul>
+		<% @leagues.each do |lg| %>
+		<li><%= link_to lg.name, league_path(lg) %></li>
+		<% end %>
+	</ul>
+
+</div>

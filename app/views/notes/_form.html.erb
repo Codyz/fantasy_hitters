@@ -1,0 +1,14 @@
+<div class="note-form">
+	<%= form_for(@note) do |f| %>
+		
+		<%= f.text_area :body %>
+
+		<%= f.hidden_field :player_id, :value => @note.player_id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+
+		<div id="note-button">
+		<%= f.submit %>
+		</div>
+	<% end %>
+</div>
+	

@@ -1,0 +1,57 @@
+.stats-display {
+	font-family: "Consolas";
+	font-size: 12px;
+	margin: 45px;
+	width: 700px;
+	text-align: left;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.stats-display th {
+	padding: 5px 5px;
+	font-size: 12px;
+	color: black;
+	font-style: bold;
+	font-style: underline;
+	border-bottom: 1px dashed black;
+	border-right: 1px dashed black;
+}
+
+.tablesorter th:hover {
+	cursor: pointer;
+}
+
+.tablesorter th.sortAsc {
+	background-color: red;
+}
+
+.tablesorter th.sortDesc {
+	background-color: blue;
+}
+
+.tablesorter td.sortedeven {
+	background-color: black;
+	text-color: white;
+}
+
+.tablesorter td.sortedodd {
+	background-color: black;
+	text-color: white;
+}
+
+.stats-display tr {
+	border-bottom: 1px dashed black;
+}
+
+.stats-display td
+{
+	padding: 5px 5px;
+	color: black;
+	width: 50px;
+	border-right: 1px dashed black
+}
+
+.stats-display td:last-child {
+	border-right: none;
+}

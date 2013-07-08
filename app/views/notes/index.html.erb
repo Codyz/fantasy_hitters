@@ -1,0 +1,11 @@
+<div class="note-display">
+
+<h2>All Notes</h2>
+
+<ul>
+	<% @notes.each do |note| %>
+	<li><%= link_to note.player.name.split.map {|nm| nm.capitalize}.join(" "), note_path(note) %></li>
+	<% end %>
+</ul>
+
+</div>

@@ -1,0 +1,46 @@
+#player-table {
+	font-family: "Consolas";
+	font-size: 12px;
+	margin: 45px;
+	width: 565px;
+	text-align: left;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#player-table th {
+	padding: 5px 5px;
+	font-size: 12px;
+	color: black;
+	font-style: bold;
+	font-style: underline;
+	border-bottom: 1px dashed black;
+	border-right: 1px dashed black;
+}
+
+#player-table tr {
+	border-bottom: 1px dashed black;
+}
+
+#player-table td
+{
+	padding: 5px 5px;
+	color: black;
+	width: 50px;
+	border-right: 1px dashed black
+}
+
+#player-table td:last-child {
+	border-right: none;
+}
+
+#player-table a {
+	text-decoration: none;
+	color: blue;
+}
+
+#player-table a:hover {
+	cursor: pointer;
+}
+
+

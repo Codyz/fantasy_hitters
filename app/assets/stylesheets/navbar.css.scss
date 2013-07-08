@@ -1,0 +1,52 @@
+ul {
+	list-style: none;
+}
+
+.group:after {
+	clear: both;
+	display: table;
+	content: "";
+}
+
+.header {
+	width: 1036px;
+	background-color: black;
+	margin-left: 40px;
+}
+
+#nav-bar {
+	float: left;
+}
+
+.nav-list > li {
+	float: left;
+	padding: 10px 10px;
+	font-style: bold;
+}
+
+.nav-list a {
+	text-decoration: none;
+	color: white;
+}
+
+#search {
+	float: right;
+}
+
+#search form {
+	margin-top: 5px;
+	display: inline-block;
+	text-align: center;
+}
+
+#search button {
+	margin-right: 10px;
+	padding: 2px;
+	background-color: white;
+	text-decoration: none;
+	text-color: black;
+}
+
+#search button:hover {
+	cursor: pointer;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621154452) do
+ActiveRecord::Schema.define(:version => 20130708190351) do
 
   create_table "batting_projections", :force => true do |t|
     t.string   "company"
@@ -68,6 +68,31 @@ ActiveRecord::Schema.define(:version => 20130621154452) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "leagues", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "num_c"
+    t.integer  "num_1b"
+    t.integer  "num_2b"
+    t.integer  "num_3b"
+    t.integer  "num_ss"
+    t.integer  "num_lf"
+    t.integer  "num_cf"
+    t.integer  "num_rf"
+    t.integer  "num_dh"
+    t.integer  "num_teams"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "player_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "players", :force => true do |t|
     t.string   "fname"
     t.string   "lname"
@@ -78,6 +103,11 @@ ActiveRecord::Schema.define(:version => 20130621154452) do
     t.boolean  "batsman"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string "name"
+    t.string "circuit"
   end
 
   create_table "users", :force => true do |t|
