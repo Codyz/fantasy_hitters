@@ -1,15 +1,33 @@
 <nav class="pos-select">
 	<ul id="pos-list">
 		<li>Filter by pos: </li>
-		<li><%= link_to "All", {:controller => controller, :action => "index"} %></li>
-		<li><%= link_to "C", {:controller => controller, :action => action, :pos => 2} %></li>
-		<li><%= link_to "1B", {:controller => controller, :action => action, :pos => 3} %></li>
-		<li><%= link_to "2B", {:controller => controller, :action => action, :pos => 4} %></li>		
-		<li><%= link_to "SS", {:controller => controller, :action => action, :pos => 6} %></li>
-		<li><%= link_to "3B", {:controller => controller, :action => action, :pos => 5} %></li>
-		<li><%= link_to "LF", {:controller => controller, :action => action, :pos => 7} %></li>
-		<li><%= link_to "CF", {:controller => controller, :action => action, :pos => 8} %></li>
-		<li><%= link_to "RF", {:controller => controller, :action => action, :pos => 9} %></li>
-		<li><%= link_to "DH", {:controller => controller, :action => action, :pos => 10} %></li>
+		<li id="pos-all"><%= link_to "All", {:controller => controller, :action => action} %></li>
+		<li id="pos2"><%= link_to "C", {:controller => controller, :action => action, :pos => 2} %></li>
+		<li id="pos3"><%= link_to "1B", {:controller => controller, :action => action, :pos => 3} %></li>
+		<li id="pos4"><%= link_to "2B", {:controller => controller, :action => action, :pos => 4} %></li>		
+		<li id="pos6"><%= link_to "SS", {:controller => controller, :action => action, :pos => 6} %></li>
+		<li id="pos5"><%= link_to "3B", {:controller => controller, :action => action, :pos => 5} %></li>
+		<li id="pos7"><%= link_to "LF", {:controller => controller, :action => action, :pos => 7} %></li>
+		<li id="pos8"><%= link_to "CF", {:controller => controller, :action => action, :pos => 8} %></li>
+		<li id="pos9"><%= link_to "RF", {:controller => controller, :action => action, :pos => 9} %></li>
+		<li id="pos10"><%= link_to "DH", {:controller => controller, :action => action, :pos => 10} %></li>
 	</ul>
 </nav>
+
+<script type="text/javascript">
+
+	$(function() {
+		var pos_reg = /pos=([0-9]+)/;
+		var curr_url = window.location.href;
+		var pos_match = pos_reg.exec(curr_url);
+			if (pos_match === null) {
+				var selector = "pos-all"
+			} else {
+				var selector = "pos" + pos_match[1];
+			}
+
+		$("#pos-list li").removeClass('bold-class');
+		$("#" + selector).addClass('bold-class');
+  });
+
+</script>

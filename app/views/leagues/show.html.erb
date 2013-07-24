@@ -1,14 +1,19 @@
 <h2 id="rank-top"><%= @league.name %>'s Ranks </h2> 
 
 
+<%= render partial: "positions/filter", :locals => {:controller => "leagues", :action => "show"} %>
+
+
 	<nav class="stat-select">
 		<ul class="stat-list">
-			<li><a href="#" id="proj-ranks" class="rank-link hidden">Toggle Projections</a></li>
-			<li><a href="#" id="stat-ranks" class="rank-link">Toggle SeasonStatistics</a></li>
+			<li id="proj-ranks"><a href="#" class="rank-link">Projections</a></li>
+			<li id="stat-ranks"><a href="#" class="rank-link">Statistics</a></li>
 		</ul>
 	</nav>
 
-	<div class="rank-display">
+	<section id="rank-table">
+
+	<div id="projection-table" class="rank-display">
 	<table class="stats-display tablesorter">
 		<%= display_header(League.headers) %>
 		<tbody>
@@ -24,7 +29,7 @@
 	</table>
 	</div>
 	
-	<div class="rank-display hidden">
+	<div id="stats-table" class="rank-display hidden">
 	<table class="stats-display tablesorter">
 		<%= display_header(League.headers) %>
 		<tbody>
@@ -40,6 +45,8 @@
 	</table>
 	</div>
 
+	</section>
+
 <script type="text/javascript">
 
 	$(function() {
@@ -48,10 +55,20 @@
   	})
   });
 
-	$('.rank-link').click(function() {
+	$('#proj-ranks').click(function() {
 		console.log("commencing toggling");
-		$('.rank-link').toggleClass('hidden');
-		$('.rank-display').toggleClass('hidden');
+		$('.rank-display').addClass('hidden');
+		$('#projection-table').removeClass('hidden');
+		$('.stat-list li').removeClass('bold-class');
+		$('#proj-ranks').addClass('bold-class');
+	});
+
+	$('#stat-ranks').click(function() {
+		console.log("commencing toggling");
+		$('.rank-display').addClass('hidden');
+		$('#stats-table').removeClass('hidden');
+		$('.stat-list li').removeClass('bold-class');
+		$('#stat-ranks').addClass('bold-class');
 	});
 
 </script>

@@ -8,8 +8,13 @@ class LeaguesController < ApplicationController
   def show
   	@league = League.find(params[:id])
 
-    @proj_vorp_seasons = @league.rank_all_vorp_seasons(false, true)
-    @live_vorp_seasons = @league.rank_all_vorp_seasons(false, false)
+    if params[:pos]
+      @proj_vorp_seasons = @league.rank_all_vorp_seasons(params[:pos].to_i, true)
+      @live_vorp_seasons = @league.rank_all_vorp_seasons(params[:pos].to_i, false)
+    else
+      @proj_vorp_seasons = @league.rank_all_vorp_seasons(false, true)
+      @live_vorp_seasons = @league.rank_all_vorp_seasons(false, false)
+    end
   end
   
   def new
